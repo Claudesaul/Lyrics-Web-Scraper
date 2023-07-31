@@ -21,14 +21,18 @@ driver.get('https://genius.com')
 
 
 search = driver.find_element(By.NAME, 'q')
+search.click()
 
-search.send_keys(song + " " + artist)
+search.send_keys(song + " " + artist + Keys.ENTER)
 
-time.sleep(1)
 
-search.send_keys(Keys.DOWN)
-time.sleep(2)
-search.send_keys(Keys.ENTER)
+driver.find_element(By.CLASS_NAME, "mini_card-subtitle").click()
+
+time.sleep(4)
+
+lyrics = driver.find_elements(By.CSS_SELECTOR, ".Lyrics__Container-sc-1ynbvzw-5.Dzxov")
 
 print(driver.title)
 
+for i in lyrics:
+    print(i.text)
