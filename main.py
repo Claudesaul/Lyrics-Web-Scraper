@@ -18,11 +18,7 @@ song = input("Song: ")
 
 # Go to site and search
 driver.get('https://genius.com')
-
-
 search = driver.find_element(By.NAME, 'q')
-search.click()
-
 search.send_keys(song + " " + artist + Keys.ENTER)
 
 
