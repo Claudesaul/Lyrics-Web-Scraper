@@ -13,8 +13,8 @@ edge_service = EdgeService(executable_path=webdriver_path)
 driver = webdriver.Edge(service=edge_service)
 
 # Get song and artist name
-artist = input("What is the artist's name?")
-song = input("What is the song name?")
+artist = input("Artist: ")
+song = input("Song: ")
 
 # Go to site and search
 driver.get('https://genius.com')
@@ -28,11 +28,10 @@ search.send_keys(song + " " + artist + Keys.ENTER)
 
 driver.find_element(By.CLASS_NAME, "mini_card-subtitle").click()
 
-time.sleep(4)
-
 lyrics = driver.find_elements(By.CSS_SELECTOR, ".Lyrics__Container-sc-1ynbvzw-5.Dzxov")
 
 print(driver.title)
 
 for i in lyrics:
     print(i.text)
+
